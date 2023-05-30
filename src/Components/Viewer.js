@@ -5,6 +5,9 @@ function Viewer() {
   const company_name = " ABC Pvt Ltd";
   const [currentDate, setcurrentDate] = useState("");
   const [CompanyName, setCompanyName] = useState(company_name);
+  const [Type_of_loan,setType_of_loan]=useState("");
+  const [numberofyears,setnumberofyears]=useState("");
+  const [borrowertype,setborrowertype]=useState("");
 
   const changeDate = (event) => {
     const newVal = event.target.value;
@@ -17,6 +20,27 @@ function Viewer() {
     setCompanyName(newVal);
   };
 
+  const LoanType = (event)=>
+  {
+    const SelectedValue=event.target.value;
+    setType_of_loan(SelectedValue);
+   // console.log(Type_of_loan);
+   // console.log(SelectedValue);
+  }
+
+  const NoOfYears = (event) =>
+  {
+    const NOY=event.target.value;
+    setnumberofyears(NOY);
+    console.log(NOY);
+  }
+
+  const BorrowerType = (event) =>
+  {
+    const Type=event.target.value;
+    setborrowertype(Type);
+  } 
+
   return (
     <div className="containeer">
       {/* <input type="text" name="" id="" onChange={(e) =>
@@ -24,7 +48,7 @@ function Viewer() {
               } /> */}
       <div className="inputdata">
         <div class="allinput">
-          <b>Type Date: </b>
+          <b>Date of the Mandate </b>
           <input
             type="date"
             value={currentDate}
@@ -32,10 +56,12 @@ function Viewer() {
             id=""
             className="inputDate"
             onChange={changeDate}
-          />
+            />
+            
         </div>
+
         <div class="allinput">
-          <b>Company Name: </b>
+          <b>Name of the Company </b>
           <input
             type="text"
             className="inputname"
@@ -46,12 +72,58 @@ function Viewer() {
             onChange={changeName}
           />
         </div>
+
+        <div class="allinput">
+          <b>Types of Loan </b>
+          <select class="form-select" id="loan-type"  onChange={LoanType} aria-label="Default select example">
+            <option selected></option>
+            <option value="Term Loan">Term Loan</option>
+            <option value="Bussiness Correspondence Limit Loan">Bussiness Correspondence Limit Loan</option>
+            <option value="Any other Type of Loan">Any other Type of Loan</option>
+          </select>
+        </div>
+
+        <div class="allinput">
+          <b>Number of Years </b>
+          <select class="form-select" id="loan-type"  onChange={NoOfYears} aria-label="Default select example">
+            <option selected></option>
+            <option value="one">One Year</option>
+            <option value="two"> Two Year</option>
+            <option value="three">Three Year</option>
+          </select>
+        </div>
+
+        <div class="allinput">
+          <b>Borrower Type </b>
+          <select class="form-select" id="loan-type"  onChange={BorrowerType} aria-label="Default select example">
+            <option selected></option>
+            <option value="NBFC and Private Sector Lender">NBFC and Private Sector Lender</option>
+            <option value="From PSUs"> From PSUs</option>
+          </select>
+        </div>
+
+
+        <div class="allinput">
+          <b>Fees </b>
+          <input
+            type="text"
+            className="inputname"
+            value={numberofyears}
+            placeholder="Fees"
+            name=""
+            id=""
+            // onChange={changeName}
+          />
+        </div>
+
+
       </div>
 
       <div className="letterdata">
         <h3>On the LetterHead of Borrower</h3>
 
-        <p id="left">{currentDate}</p>
+        <p id="left">{currentDate}  {Type_of_loan}
+        </p>
         <p>
           <b>Express Rupya - Propietor Anita Khandelwal</b>
         </p>
@@ -128,8 +200,10 @@ function Viewer() {
         <ul>
           <li>
             To Introduce and coordinate with various finacial Institutions to
-            Raise Finance through Term Loan / Bussiness Correspondence limits or
-            any other mutually agreed product .{" "}
+            Raise Finance through
+            {Type_of_loan} .
+             {/* Term Loan / Bussiness Correspondence limits or
+            any other mutually agreed product . */}
           </li>
           <li>Obtaining a term sheet from the lenders in respect of funding</li>
           <li>Assist in negotiation process</li>
@@ -151,10 +225,14 @@ function Viewer() {
 
           <tr>
             <td>
-              Term Loan/Bussiness Correspondence limits or any other mutually
-              agreed product{" "}
+            {Type_of_loan}
+              {/* Term Loan/Bussiness Correspondence limits or any other mutually
+              agreed product */}
             </td>
-            <td>From NBFS and private sector lenders</td>
+            <td>
+              {borrowertype}
+              {/* From NBFS and private sector lenders */}
+              </td>
             <td>
               Within 7 days of raising the invoice. Invoice to be raised post
               disbursement of first tranche.
@@ -190,8 +268,9 @@ function Viewer() {
 
           <tr>
             <td>
-              Term Loan/Bussiness Correspondence limits or any other mutually
-              agreed product{" "}
+            {Type_of_loan}
+              {/* Term Loan/Bussiness Correspondence limits or any other mutually
+              agreed product */}
             </td>
             <td>From PSUs</td>
             <td> For 3 year</td>
@@ -230,7 +309,10 @@ function Viewer() {
           {" "}
           We hereby agree that we will not enter into any agreement with lenders
           identified and agreed to between <b>{CompanyName}</b> and Express
-          Rupya without invloving Express Rupya for three years from the date of
+          Rupya without invloving Express Rupya for 
+          {numberofyears} 
+          {/* three years */}
+            from the date of
           this letter .
         </p>
         <br />
